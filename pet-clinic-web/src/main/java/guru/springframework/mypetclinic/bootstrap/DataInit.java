@@ -24,14 +24,12 @@ public class DataInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Owner owner = new Owner();
-        owner.setId(1L);
         owner.setFirstName("joe");
         owner.setLastName("cascioli");
 
         ownerService.save(owner);
 
         Owner owner1 = new Owner();
-        owner1.setId(2L);
         owner1.setFirstName("kristin");
         owner1.setLastName("peters");
 
@@ -39,13 +37,11 @@ public class DataInit implements CommandLineRunner {
 
         System.out.println("Owners loaded...");
         Vet vet = new Vet();
-        vet.setId(1L);
         vet.setFirstName("Lauren");
         vet.setLastName("Jacobson");
         vetService.save(vet);
 
         Vet vet1 = new Vet();
-        vet1.setId(2L);
         vet1.setFirstName("Jess");
         vet1.setLastName("Biznes");
         vetService.save(vet1);
