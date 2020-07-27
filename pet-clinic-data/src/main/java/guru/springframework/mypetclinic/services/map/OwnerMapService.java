@@ -57,8 +57,9 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
                     pet.setId(savedPet.getId());
                 }
             });
+        }else{
+            throw new RuntimeException("Owner is null");
         }
-
         return super.save(owner);
     }
 
