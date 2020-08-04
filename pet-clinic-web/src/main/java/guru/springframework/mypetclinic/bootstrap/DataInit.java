@@ -14,24 +14,21 @@ public class DataInit implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
-    private final PetService petService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataInit(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, PetService petService, SpecialtyService specialtyService) {
+    public DataInit(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
-        this.petService = petService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        int count = petTypeService.findAll().size();
-        if(count == 0){
-            loadData();
-        }
+        loadData();
     }
 
     private void loadData(){
@@ -87,6 +84,15 @@ public class DataInit implements CommandLineRunner {
         ownerService.save(kristin);
 
         System.out.println("Owners loaded...");
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(kristinsPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy kitty");
+
+        visitService.save(catVisit);
+
+        System.out.println("Visit Loaded....");
 
         Vet lJacobson = new Vet();
         lJacobson.setFirstName("Lauren");
