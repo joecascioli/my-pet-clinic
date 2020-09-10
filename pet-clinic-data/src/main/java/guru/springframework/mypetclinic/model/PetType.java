@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -18,4 +19,9 @@ import javax.persistence.Table;
 public class PetType extends  BaseEntity {
 
     private String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

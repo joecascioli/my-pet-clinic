@@ -20,6 +20,7 @@
             <td th:text="${owner.id}">0</td>
             <td th:text="${owner.firstName}">Jane</td>
             <td th:text="${owner.lastName}">Doe</td>
+            <td><a th:href="/owners/${owner.id}">View</a></td>
         </tr>
         </tbody>
     </table>

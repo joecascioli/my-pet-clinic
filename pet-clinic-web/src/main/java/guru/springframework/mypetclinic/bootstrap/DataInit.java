@@ -65,7 +65,7 @@ public class DataInit implements CommandLineRunner {
         joesPet.setOwner(joe);
         joesPet.setBirthday(LocalDate.now());
         joe.getPets().add(joesPet);
-        ownerService.save(joe);
+        Owner owner =ownerService.save(joe);
 
 
         Owner kristin = new Owner();
@@ -84,6 +84,13 @@ public class DataInit implements CommandLineRunner {
         ownerService.save(kristin);
 
         System.out.println("Owners loaded...");
+
+        Visit dogVisit = new Visit();
+        dogVisit.setPet(joesPet);
+        dogVisit.setDate(LocalDate.now());
+        dogVisit.setDescription("Sneezy doggy");
+
+        visitService.save(dogVisit);
 
         Visit catVisit = new Visit();
         catVisit.setPet(kristinsPet);
