@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Profile("springdatajpa")
@@ -55,5 +57,11 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public void deleteById(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Owner> findAllByLastName(String lastName) {
+        return this.findAll().stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).collect(Collectors.toList());
     }
 }

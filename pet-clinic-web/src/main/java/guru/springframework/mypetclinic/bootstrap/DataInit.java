@@ -65,7 +65,7 @@ public class DataInit implements CommandLineRunner {
         joesPet.setOwner(joe);
         joesPet.setBirthday(LocalDate.now());
         joe.getPets().add(joesPet);
-        Owner owner =ownerService.save(joe);
+        ownerService.save(joe);
 
 
         Owner kristin = new Owner();
